@@ -9,26 +9,18 @@
 </head>
 
 <body>
-    <h1>RSA Decryption</h1>
-
-    @if(isset($plaintext))
-    <p>Plaintext: {{ $plaintext }}</p>
-    @endif
-
-    <form method="POST" action="/encrypt">
-        @csrf
-        <div class="form-group">
-            <label for="public_key">Public Key:</label>
-            <input type="text" class="form-control" id="public_key" name="public_key" required>
+    <div class="flex flex-col p-10 items-center justify-center text-center border-black border-4 rounded-3xl mx-auto my-auto">
+        <div class="flex items-center justify-center">
+            <div class="text-4xl flex flex-col items-center justify-center text-center mb-8 font-bold border-black border-4 border-b-8 rounded-3xl p-10">
+                <!--  Public & Private Key-->
+                <div class="flex flex-row">
+                    <p class="text-xl font-bold">Your Decrypted Text:</p>
+                    @if(isset($plaintext))
+                    <p class="text-xl font-bold">{{ $plaintext }}</p>
+                    @endif
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="plaintext">Plaintext:</label>
-            <textarea class="form-control" id="plaintext" name="plaintext" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Encrypt</button>
-    </form>
-
-
 </body>
 
 </html>

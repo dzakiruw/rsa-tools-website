@@ -9,55 +9,147 @@
 </head>
 
 <body>
-    <h1>RSA Encryption/Decryption</h1>
+    <main class="flex item-start justify-center flex-col">
 
-    <form method="POST" action="/">
-        @csrf
-        <div class="form-group">
-            <label for="p">P:</label>
-            <input type="text" class="form-control" id="p" name="p" required>
-        </div>
-        <div class="form-group">
-            <label for="q">Q:</label>
-            <input type="text" class="form-control" id="q" name="q" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Generate</button>
-    </form>
+        <!-- Navbar -->
+        <nav class="relative container mx-auto p-6 font-rubik">
+            <!-- Flex Container For All Items -->
+            <div class="flex items-center justify-between">
+                <!-- Flex Container For Logo/Menu -->
+                <div class="flex items-center space-x-20">
+                    <!-- Logo -->
+                    <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_tijj0wnj.json" background="transparent" speed="1" style="width: 180px; height: 180px;" loop autoplay></lottie-player>
+                    <!-- Navigation Menu -->
+                    <div class="hidden space-x-12 font-bold lg:flex">
+                        <a href="#tts" class="text-grayishViolet hover:text-gray-500 cursor-pointer">Tool</a>
+                        <a href="#tts" class="text-grayishViolet hover:text-gray-500">Tech Stack</a>
+                        <a href="#about" class="text-grayishViolet hover:text-gray-500">About Us</a>
+                    </div>
+                </div>
+                <!-- Right Buttons Menu -->
+                <div class="hidden items-center space-x-6 font-bold text-grayishViolet lg:flex">
+                    <button class="px-8 py-3 font-bold text-white bg-blue-700 rounded-full hover:opacity-70 border-4 border-b-[10px] border-black">
+                        Welcome
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-    @if(isset($public_key))
-    <p>Public Key: {{ ($public_key) }}</p>
-    @endif
+        <!-- Hero Container -->
+        <div class="container flex flex-col-reverse mx-auto p- pb-0 lg:flex-row font-rubik">
+            <!-- Content Container -->
+            <div class="flex flex-col space-y-10 mb-44 lg:mt-16 lg:w-1/2 xl:mb-52">
+                <div class="text-6xl font-bold text-center lg:text-8xl lg:text-left">
+                    More than just a Encrypt-Decrypt Tool
+                </div>
+                <p class="text-2xl text-center text-gray-400 lg:max-w-md lg:text-left">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+                <div class="mx-auto lg:mx-0">
+                    <a href="#tts" class="py-5 px-10 text-2xl font-bold text-white bg-blue-700 rounded-full lg:py-4 hover:opacity-70 border-4 border-b-[10px] border-black">Get Started</a>
+                </div>
+            </div>
 
-    @if(isset($private_key))
-    <p>Private Key: {{ ($private_key) }}</p>
-    @endif
+            <!-- Animation Image -->
+            <div class="mb-0 mx-auto pl-28 md:w-180 lg:mb-0 lg:w-1/2">
+                <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_cgjrfdzx.json" background="transparent" speed="1" style="width: 600px; height: 600px;" loop autoplay></lottie-player>
+            </div>
+        </div>
 
-    <form method="POST" action="/encrypt">
-        @csrf
-        <div class="form-group">
-            <label for="public_key">Public Key:</label>
-            <input type="text" class="form-control" id="public_key" name="public_key" required>
+        <!-- Wave Section -->
+        <div class="#ffff">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#f3f4f5" fill-opacity="1" d="M0,32L60,48C120,64,240,96,360,106.7C480,117,600,107,720,128C840,149,960,203,1080,202.7C1200,203,1320,149,1380,122.7L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+            </svg>
+            <div class="bg-[#f3f4f5] w-full h-64"></div>
+            <div class="bg-[#ffff]">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <path fill="#f3f4f5" fill-opacity="1" d="M0,32L60,69.3C120,107,240,181,360,224C480,267,600,277,720,240C840,203,960,117,1080,85.3C1200,53,1320,75,1380,85.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+                </svg>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="plaintext">Plaintext:</label>
-            <textarea class="form-control" id="plaintext" name="plaintext" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Encrypt</button>
-    </form>
 
+        <!-- Encrypt-Decrypt Tool -->
 
-    <form method="POST" action="/decrypt">
-        @csrf
-        <div class="form-group">
-            <label for="private_key">Private Key:</label>
-            <input type="text" class="form-control" id="private_key" name="private_key" required>
+        <div class="text-6xl font-bold text-center lg:text-8xl mb-8">
+            Our Tool
         </div>
-        <div class="form-group">
-            <label for="ciphertext">Chipertext:</label>
-            <textarea class="form-control" id="ciphertext" name="ciphertext" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Decrypt</button>
-    </form>
+        <div class="flex flex-row">
+            <div class="flex flex-col p-10 items-start justify-center text-center">
+                <div>
+                    <div class="flex flex-col border-4 border-b-8 border-black rounded-3xl p-10 items-center justify-center text-center">
+                        <div class="flex flex-col">
+                            <div class="text-4xl flex items-center justify-center text-center mb-8 font-bold">
+                                Insert 2 Prime Number
+                            </div>
+                        </div>
+
+                        <form method="POST" action="/">
+                            @csrf
+                            <div class="flex flex-row">
+                                <div class="form-group">
+                                    <input type="text" id="p" name="p" value="" required="" class="form-control mx-2 px-3 py-2 bg-white border-2 shadow-sm border-black placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-3xl sm:text-sm focus:ring-1" placeholder="Input Prime Mumber">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="q" name="q" value="" required class="form-control mx-2 px-3 py-2 bg-white border-2 shadow-sm border-black placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-3xl sm:text-sm focus:ring-1" placeholder="Input Prime Mumber">
+                                </div>
+                            </div>
+
+                            <!-- <button type="submit" class="btn btn-primary">Generate</button> -->
+                            <button type="submit" class="form-control mx-auto text-center border-2 w-full border-black bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 mt-6 py-2 px-8 rounded-2xl drop-shadow-[0_4px_0_rgba(0,0,0,1)]">Generate
+                                Key</button>
+                        </form>
+                    </div>
+                    <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_tdnhii9y.json" background="transparent" speed="1" style="width: 400px; height: 400px;" loop autoplay></lottie-player>
+                </div>
+            </div>
+            <div class="flex flex-col border-4 border-b-8 border-black rounded-3xl p-10 items-center justify-center text-center w-2/3">
+
+                @if(isset($public_key))
+                <p>Public Key: {{ ($public_key) }}</p>
+                @endif
+
+                @if(isset($private_key))
+                <p>Private Key: {{ ($private_key) }}</p>
+                @endif
+
+                <div class="text-4xl flex items-center justify-center text-center mb-8 font-bold">
+                    Encrypt
+                </div>
+                <form method="POST" action="/encrypt">
+                    @csrf
+                    <div class="form-group">
+                        <label for="public_key">Public Key:</label>
+                        <input type="text" class="form-control mx-2 px-3 py-2 bg-white border-2 shadow-sm border-black placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-3xl sm:text-sm focus:ring-1" placeholder="Input Public Key" id="public_key" name="public_key" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="plaintext">Plaintext:</label>
+                        <textarea class="form-control" id="plaintext" name="plaintext" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Encrypt</button>
+                </form>
+
+                <div class="text-4xl flex items-center justify-center text-center mb-8 font-bold">
+                    Decrypt
+                </div>
+                <form method="POST" action="/decrypt">
+                    @csrf
+                    <div class="form-group">
+                        <label for="private_key">Private Key:</label>
+                        <input type="text" class="form-control mx-2 px-3 py-2 bg-white border-2 shadow-sm border-black placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-3xl sm:text-sm focus:ring-1" placeholder="Input Private Key" id="private_key" name="private_key" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ciphertext">Chipertext:</label>
+                        <textarea class="form-control" id="ciphertext" name="ciphertext" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Decrypt</button>
+                </form>
+
+            </div>
+
+    </main>
+    <img src="https://i.ibb.co/x1cgLst/group-ilustration.png" alt="group-ilustration" border="0">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 
 </html>

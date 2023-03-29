@@ -37,9 +37,9 @@ class EncryptionController extends Controller
         $plaintext = $request->input('plaintext');
 
         // Simpan plaintext ke database
-        DB::table('plaintexts')->insert([
-            'plaintext' => $plaintext
-        ]);
+        // DB::table('plaintexts')->insert([
+        //     'plaintext' => $plaintext
+        // ]);
 
         // Ambil public key dari input form
         $public_key = explode(',', $request->input('public_key'));

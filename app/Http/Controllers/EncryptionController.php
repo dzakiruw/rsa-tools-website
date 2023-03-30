@@ -72,6 +72,7 @@ class EncryptionController extends Controller
         ]);
     }
     //Mendefinisikan fungsi publik gcd untuk menghitung FPB (Faktor Persekutuan Terbesar) dari dua bilangan $a dan $b.
+    //a dan b adalah bilangan yang akan dihitung FPB-nya.
     public function gcd($a, $b)
     {
         //Jika $a sama dengan 0, maka kembalikan nilai $b. Jika tidak, panggil fungsi gcd dengan argumen ($b % $a, $a).
@@ -84,6 +85,7 @@ class EncryptionController extends Controller
     public function modInverse($a, $m)
     {
         //Lakukan perulangan dari 1 hingga $m - 1, jika ditemukan nilai $x yang memenuhi ($a * $x) % $m == 1, kembalikan nilai $x tersebut.
+        //m merepresentasikan teks yang akan dienkripsi atau didekripsi dalam algoritma kriptografi RSA.
         for ($x = 1; $x < $m; $x++)
             if (($a * $x) % $m == 1)
                 return $x;
@@ -93,17 +95,23 @@ class EncryptionController extends Controller
     //untuk menghasilkan pasangan kunci publik dan privat RSA berdasarkan dua bilangan prima $p dan $q.
     public function generateKeys($p, $q)
     {
+        //Nilai n digunakan sebagai modulo dalam operasi enkripsi dan dekripsi.
         $n = $p * $q;
         $phi = ($p - 1) * ($q - 1);
 
         //Cari nilai $e$ yang memenuhi FPB($e, \phi) = 1.
+        //e eksponen enkripsi dalam algoritma kriptografi RSA. 
+        //Eksponen enkripsi digunakan untuk mengenkripsi teks dengan kunci publik. Nilai e biasanya dipilih sedemikian rupa sehingga memiliki faktor persekutuan terbesar (FPB) 1 dengan nilai phi (FPB(e, phi) = 1).
         for ($e = 2; $e < $phi; $e++)
+        //phi (Φ) adalah fungsi Euler totient, yang menghitung jumlah bilangan bulat yang lebih kecil dari suatu bilangan dan koprima (relatif prima) dengan bilangan tersebut.
             if ($this->gcd($e, $phi) == 1)
                 break;
         //Menghitung nilai $d$ sebagai invers dari $e$ modulo $\phi$.
         $d = $this->modInverse($e, $phi);
 
         return [
+            //d eksponen dekripsi dalam algoritma kriptografi RSA. 
+            //Eksponen dekripsi digunakan untuk mendekripsi teks yang telah dienkripsi dengan kunci publik. Nilai d dihitung sebagai invers dari e modulo phi (d ≡ e^(-1) mod phi).
             'public' => [$e, $n],
             'private' => [$d, $n]
         ];

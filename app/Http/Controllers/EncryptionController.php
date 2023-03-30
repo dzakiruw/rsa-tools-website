@@ -117,11 +117,13 @@ class EncryptionController extends Controller
         ];
     }
 
+    //blok 2 dimulai dari str_split
     public function rsaEncrypt($plaintext, $public_key)
     {
         list($e, $n) = $public_key;
         $ciphertext = [];
 
+        //plaintext dipecah menjadi blok-blok karakter
         foreach (str_split($plaintext) as $char) {
             //Mengubah karakter menjadi kode ASCII.
             $m = ord($char);
@@ -136,7 +138,7 @@ class EncryptionController extends Controller
     {
         list($d, $n) = $private_key;
         $plaintext = '';
-
+        //ciphertext dipecah menjadi blok-blok yang dipisahkan oleh tanda koma
         $ciphertext_array = explode(",", $ciphertext);
 
         foreach ($ciphertext_array as $cipher) {
